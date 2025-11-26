@@ -35,7 +35,7 @@ const Navbar = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-glow transition-shadow">
               <span className="text-white font-bold text-xl">C</span>
             </div>
-            <span className="text-xl font-bold gradient-text hidden sm:block">
+            <span className="text-xl font-bold gradient-text block pt-1">
               CUSAATHI
             </span>
           </Link>
