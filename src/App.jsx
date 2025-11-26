@@ -20,7 +20,9 @@ import {
   CollegeDetail,
   Calendar,
   Helpdesk,
-  Search
+  Search,
+  Scholarships,
+  AiChat
 } from './pages';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -28,6 +30,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const Terms = lazy(() => import('./pages/Terms'));
+const Features = lazy(() => import('./pages/Features'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 
@@ -54,6 +57,7 @@ function App() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
+              <Route path="/features" element={<Features />} />
               <Route path="/search" element={<Search />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
@@ -89,6 +93,10 @@ function App() {
               
               {/* Helpdesk */}
               <Route path="/helpdesk" element={<Helpdesk />} />
+              
+              {/* New Features */}
+              <Route path="/scholarships" element={<Scholarships />} />
+              <Route path="/ai-chat" element={<AiChat />} />
               
               {/* Protected Routes */}
               <Route path="/dashboard" element={<Dashboard />} />

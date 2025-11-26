@@ -73,4 +73,8 @@ export const Calendar = () => <PlaceholderPage title="Academic Calendar" descrip
 // Helpdesk
 export const Helpdesk = () => <PlaceholderPage title="Helpdesk" description="Get help and support" />;
 
+// New Features
+export const Scholarships = () => <PlaceholderPage title="Scholarship Saathi" description="Find financial aid opportunities" />;
+export const AiChat = () => <PlaceholderPage title="Cusaathi AI" description="Your personal academic assistant" />;
+
 export default PlaceholderPage;

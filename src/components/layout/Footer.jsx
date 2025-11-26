@@ -8,6 +8,7 @@ const Footer = () => {
     'Quick Links': [
       { name: 'About Us', path: '/about' },
       { name: 'Contact', path: '/contact' },
+      { name: 'Features', path: '/features' },
       { name: 'Privacy Policy', path: '/privacy' },
       { name: 'Terms of Service', path: '/terms' },
     ],

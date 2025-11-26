@@ -1,65 +1,19 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
-  Bell, 
-  BookOpen, 
-  Users, 
-  Briefcase, 
-  Wrench,
   TrendingUp,
-  Calendar,
+  BookOpen,
+  Users,
   MessageSquare,
   Award,
   ArrowRight,
   Sparkles
 } from 'lucide-react';
 import { Button, Card, Badge, SectionTitle } from '../components/common';
+import { features } from '../data/constant/featuresData';
 
 const Home = () => {
-  const features = [
-    {
-      icon: Bell,
-      title: 'Curated Notices',
-      description: 'Stay updated with exam, admission, result, and general notices with customizable alerts',
-      color: 'from-blue-500 to-cyan-500',
-      link: '/notices'
-    },
-    {
-      icon: BookOpen,
-      title: 'Academic Resources',
-      description: 'Access syllabus, PYQs, notes, and library resources for all departments',
-      color: 'from-purple-500 to-pink-500',
-      link: '/resources'
-    },
-    {
-      icon: Users,
-      title: 'Community Hub',
-      description: 'Connect with peers, join study groups, and get guidance from alumni',
-      color: 'from-green-500 to-emerald-500',
-      link: '/community'
-    },
-    {
-      icon: Briefcase,
-      title: 'Career & Placement',
-      description: 'Explore placements, internships, and mentorship opportunities',
-      color: 'from-orange-500 to-red-500',
-      link: '/career'
-    },
-    {
-      icon: Wrench,
-      title: 'Productivity Tools',
-      description: 'PDF tools, calculators, timetable maker, and more utilities',
-      color: 'from-indigo-500 to-purple-500',
-      link: '/tools'
-    },
-    {
-      icon: Calendar,
-      title: 'Academic Calendar',
-      description: 'Never miss important dates, exams, and deadlines',
-      color: 'from-pink-500 to-rose-500',
-      link: '/calendar'
-    },
-  ];
+
 
   const stats = [
     { label: 'Affiliated Colleges', value: '151+', icon: Award },

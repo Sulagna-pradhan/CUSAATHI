@@ -15,7 +15,9 @@ export {
   CollegeList,
   CollegeDetail,
   Calendar,
-  Helpdesk
+  Helpdesk,
+  Scholarships,
+  AiChat
 } from './PlaceholderPages';
 
 export { default as Search } from './Search';
