@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Navbar, Footer } from './components/layout';
-import { LoadingSpinner } from './components/common';
+import { LoadingSpinner, DocsGuard } from './components/common';
 
 import { 
   Login,
@@ -22,7 +22,13 @@ import {
   Helpdesk,
   Search,
   Scholarships,
-  AiChat
+  AiChat,
+  DocsLayout,
+  DocsIntroduction,
+  DocsStructure,
+  DocsComponents,
+  DocsTheme,
+  DocsState
 } from './pages';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
@@ -102,6 +108,19 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/profile" element={<Profile />} />
               
+              {/* Documentation */}
+              <Route path="/docs" element={
+                <DocsGuard>
+                  <DocsLayout />
+                </DocsGuard>
+              }>
+                <Route index element={<DocsIntroduction />} />
+                <Route path="structure" element={<DocsStructure />} />
+                <Route path="components" element={<DocsComponents />} />
+                <Route path="theme" element={<DocsTheme />} />
+                <Route path="state" element={<DocsState />} />
+              </Route>
+
               {/* 404 */}
               <Route path="*" element={<NotFound />} />
             </Routes>
