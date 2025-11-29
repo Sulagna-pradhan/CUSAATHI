@@ -9,7 +9,7 @@ import {
   ArrowRight,
   Sparkles
 } from 'lucide-react';
-import { Button, Card, Badge, SectionTitle } from '../components/common';
+import { Button, Card, SectionTitle } from '../components/common';
 import { features } from '../data/constant/featuresData';
 
 const Home = () => {
@@ -278,7 +278,7 @@ const Home = () => {
               <div className="absolute -inset-4 bg-gradient-to-br from-emerald-300/40 via-lime-300/20 to-emerald-500/40 rounded-3xl opacity-60 blur-2xl" />
               <div className="relative rounded-3xl border border-emerald-100 bg-white/90 shadow-xl overflow-hidden backdrop-blur-md dark:border-emerald-900 dark:bg-dark-card/90">
                 <img
-                  src="https://cdn.pixabay.com/photo/2020/08/22/12/42/teamwork-5508359_1280.png"
+                  src="/About us banner.svg"
                   alt="Students learning together"
                   className="w-full object-cover aspect-video"
                 />
@@ -331,6 +331,65 @@ const Home = () => {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* How to Get Started Section */}
+      <section className="py-20 md:py-24 bg-gradient-to-b from-white to-emerald-50/30 dark:from-dark-bg dark:to-emerald-950/20">
+        <div className="container-custom">
+          <SectionTitle
+            title="How to Get Started"
+            subtitle="Begin your journey with CUSAATHI in three simple steps."
+          />
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            {/* Connecting line for desktop */}
+            <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-emerald-100 -translate-y-1/2 z-0 dark:bg-emerald-900/50" />
+
+            {[
+              {
+                img: '/step 1.svg',
+                title: '1. Login',
+                desc: 'Create an account or log in to access your personalized dashboard.'
+              },
+              {
+                img: '/step 2.svg',
+                title: '2. Choose Features',
+                desc: 'Browse through our wide range of tools and resources tailored for you.'
+              },
+              {
+                img: '/step 3.svg',
+                title: '3. Do your job',
+                desc: 'Use the resources to study, collaborate, and excel in your academic journey.'
+              }
+            ].map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="relative z-10"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-48 h-48 mb-6 relative">
+                    <div className="absolute inset-0 bg-emerald-100/50 rounded-full blur-2xl dark:bg-emerald-900/30" />
+                    <img
+                      src={step.img}
+                      alt={step.title}
+                      className="relative w-full h-full object-contain drop-shadow-lg transform hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-xs mx-auto">
+                    {step.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
