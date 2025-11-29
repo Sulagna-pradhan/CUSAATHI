@@ -1,4 +1,10 @@
-import PropTypes from 'prop-types';
+interface LoadingSkeletonProps {
+  variant?: 'text' | 'title' | 'avatar' | 'card' | 'button';
+  width?: string | number;
+  height?: string | number;
+  count?: number;
+  className?: string;
+}
 
 const LoadingSkeleton = ({ 
   variant = 'text',
@@ -6,7 +12,7 @@ const LoadingSkeleton = ({
   height,
   count = 1,
   className = '',
-}) => {
+}: LoadingSkeletonProps) => {
   const variants = {
     text: 'h-4 rounded',
     title: 'h-8 rounded',
@@ -28,14 +34,6 @@ const LoadingSkeleton = ({
   ) : (
     skeletons[0]
   );
-};
-
-LoadingSkeleton.propTypes = {
-  variant: PropTypes.oneOf(['text', 'title', 'avatar', 'card', 'button']),
-  width: PropTypes.string,
-  height: PropTypes.string,
-  count: PropTypes.number,
-  className: PropTypes.string,
 };
 
 export default LoadingSkeleton;

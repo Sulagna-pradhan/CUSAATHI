@@ -1,4 +1,12 @@
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
+
+interface BadgeProps {
+  children: ReactNode;
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'error' | 'info' | 'gray';
+  size?: 'sm' | 'md' | 'lg';
+  dot?: boolean;
+  className?: string;
+}
 
 const Badge = ({ 
   children, 
@@ -6,7 +14,7 @@ const Badge = ({
   size = 'md',
   dot = false,
   className = '',
-}) => {
+}: BadgeProps) => {
   const variants = {
     primary: 'bg-primary-100 text-primary-700 dark:bg-primary-900/30 dark:text-primary-300',
     secondary: 'bg-secondary-100 text-secondary-700 dark:bg-secondary-900/30 dark:text-secondary-300',
@@ -39,14 +47,6 @@ const Badge = ({
       {children}
     </span>
   );
-};
-
-Badge.propTypes = {
-  children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'success', 'warning', 'error', 'info', 'gray']),
-  size: PropTypes.oneOf(['sm', 'md', 'lg']),
-  dot: PropTypes.bool,
-  className: PropTypes.string,
 };
 
 export default Badge;

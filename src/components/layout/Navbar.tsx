@@ -21,7 +21,7 @@ const Navbar = () => {
     { name: 'Tools', path: '/tools' },
   ];
 
-  const isActive = (path) => {
+  const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/';
     return location.pathname.startsWith(path);
   };

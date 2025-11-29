@@ -1,6 +1,14 @@
 import { motion } from 'framer-motion';
 
-const SectionTitle = ({ title, subtitle, align = 'center', center = false, className = '' }) => {
+interface SectionTitleProps {
+  title: string;
+  subtitle?: string;
+  align?: 'left' | 'center' | 'right';
+  center?: boolean;
+  className?: string;
+}
+
+const SectionTitle = ({ title, subtitle, align = 'center', center = false, className = '' }: SectionTitleProps) => {
   const alignment = center || align === 'center';
   
   return (

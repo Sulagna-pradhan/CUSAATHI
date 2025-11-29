@@ -1,6 +1,18 @@
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
-import PropTypes from 'prop-types';
+import { ElementType, ReactNode } from 'react';
+
+interface ButtonProps extends HTMLMotionProps<"button"> {
+  children: ReactNode;
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  loading?: boolean;
+  disabled?: boolean;
+  icon?: ElementType;
+  iconPosition?: 'left' | 'right';
+  fullWidth?: boolean;
+  className?: string;
+}
 
 const Button = ({ 
   children, 
@@ -13,7 +25,7 @@ const Button = ({
   fullWidth = false,
   className = '',
   ...props 
-}) => {
+}: ButtonProps) => {
   const baseStyles = 'btn-base inline-flex items-center justify-center gap-2 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200';
   
   const variants = {
@@ -47,18 +59,6 @@ const Button = ({
       {!loading && Icon && iconPosition === 'right' && <Icon className="w-4 h-4" />}
     </motion.button>
   );
-};
-
-Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'outline', 'ghost', 'danger']),
-  size: PropTypes.oneOf(['sm', 'md', 'lg']),
-  loading: PropTypes.bool,
-  disabled: PropTypes.bool,
-  icon: PropTypes.elementType,
-  iconPosition: PropTypes.oneOf(['left', 'right']),
-  fullWidth: PropTypes.bool,
-  className: PropTypes.string,
 };
 
 export default Button;

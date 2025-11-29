@@ -1,7 +1,16 @@
-import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
+import { motion, HTMLMotionProps } from 'framer-motion';
+import { ReactNode, HTMLAttributes } from 'react';
 
-const Card = ({
+interface CardProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onClick'> {
+  children: ReactNode;
+  variant?: 'default' | 'elevated' | 'glass' | 'gradient';
+  clickable?: boolean;
+  hover?: boolean;
+  className?: string;
+  onClick?: () => void;
+}
+
+const CardMain = ({
   children,
   variant = 'default',
   clickable = false,
@@ -9,7 +18,7 @@ const Card = ({
   className = '',
   onClick,
   ...props
-}) => {
+}: CardProps) => {
   const baseStyles =
     'relative rounded-2xl overflow-hidden transition-all duration-300 ease-out';
 
@@ -33,14 +42,17 @@ const Card = ({
 
   const Component = clickable ? motion.div : 'div';
 
+  // Cast props to any to avoid complex union type issues between motion.div and div props
+  const componentProps = {
+    className: `${baseStyles} ${variants[variant]} ${hoverStyles} ${clickableStyles} ${className}`,
+    onClick: clickable ? onClick : undefined,
+    whileHover: clickable ? { scale: 1.02 } : {},
+    whileTap: clickable ? { scale: 0.98 } : {},
+    ...props
+  };
+
   return (
-    <Component
-      className={`${baseStyles} ${variants[variant]} ${hoverStyles} ${clickableStyles} ${className}`}
-      onClick={onClick}
-      whileHover={clickable ? { scale: 1.02 } : {}}
-      whileTap={clickable ? { scale: 0.98 } : {}}
-      {...props}
-    >
+    <Component {...(componentProps as any)}>
       {/* subtle inner outline to separate card content from background when many cards are together */}
       <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-emerald-100/60 dark:ring-emerald-900/70" />
       <div className="relative">{children}</div>
@@ -48,16 +60,12 @@ const Card = ({
   );
 };
 
-Card.propTypes = {
-  children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(['default', 'elevated', 'glass', 'gradient']),
-  clickable: PropTypes.bool,
-  hover: PropTypes.bool,
-  className: PropTypes.string,
-  onClick: PropTypes.func,
-};
+interface CardSubComponentProps {
+  children: ReactNode;
+  className?: string;
+}
 
-Card.Header = ({ children, className = '' }) => (
+const Header = ({ children, className = '' }: CardSubComponentProps) => (
   <div
     className={`px-4 md:px-6 py-3 md:py-4 border-b border-emerald-100/90 dark:border-emerald-800 flex items-center gap-3 ${className}`}
   >
@@ -65,21 +73,11 @@ Card.Header = ({ children, className = '' }) => (
   </div>
 );
 
-Card.Header.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
-
-Card.Body = ({ children, className = '' }) => (
+const Body = ({ children, className = '' }: CardSubComponentProps) => (
   <div className={`px-4 md:px-6 py-4 md:py-5 ${className}`}>{children}</div>
 );
 
-Card.Body.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
-
-Card.Footer = ({ children, className = '' }) => (
+const Footer = ({ children, className = '' }: CardSubComponentProps) => (
   <div
     className={`px-4 md:px-6 py-3 md:py-4 border-t border-emerald-100/90 dark:border-emerald-800 bg-emerald-50/40 dark:bg-emerald-950/40 flex items-center gap-3 ${className}`}
   >
@@ -87,9 +85,10 @@ Card.Footer = ({ children, className = '' }) => (
   </div>
 );
 
-Card.Footer.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-};
+const Card = Object.assign(CardMain, {
+  Header,
+  Body,
+  Footer,
+});
 
 export default Card;

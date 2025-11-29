@@ -1,7 +1,12 @@
 import { Loader2 } from 'lucide-react';
-import PropTypes from 'prop-types';
 
-const LoadingSpinner = ({ size = 'md', text, className = '' }) => {
+interface LoadingSpinnerProps {
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  text?: string;
+  className?: string;
+}
+
+const LoadingSpinner = ({ size = 'md', text, className = '' }: LoadingSpinnerProps) => {
   const sizes = {
     sm: 'w-4 h-4',
     md: 'w-8 h-8',
@@ -17,12 +22,6 @@ const LoadingSpinner = ({ size = 'md', text, className = '' }) => {
       )}
     </div>
   );
-};
-
-LoadingSpinner.propTypes = {
-  size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
-  text: PropTypes.string,
-  className: PropTypes.string,
 };
 
 export default LoadingSpinner;

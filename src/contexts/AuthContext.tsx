@@ -1,7 +1,15 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-const AuthContext = createContext();
+interface AuthContextType {
+  user: any;
+  loading: boolean;
+  isAuthenticated: boolean;
+  login: (userData: any) => void;
+  logout: () => void;
+  updateProfile: (updates: any) => void;
+}
+
+const AuthContext = createContext<AuthContextType | null>(null);
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -11,8 +19,12 @@ export const useAuth = () => {
   return context;
 };
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+export const AuthProvider = ({ children }: AuthProviderProps) => {
+  const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  const login = (userData) => {
+  const login = (userData: any) => {
     setUser(userData);
     localStorage.setItem('cusaathi-user', JSON.stringify(userData));
   };
@@ -34,7 +46,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('cusaathi-user');
   };
 
-  const updateProfile = (updates) => {
+  const updateProfile = (updates: any) => {
     const updatedUser = { ...user, ...updates };
     setUser(updatedUser);
     localStorage.setItem('cusaathi-user', JSON.stringify(updatedUser));
@@ -54,8 +66,4 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
-
-AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };

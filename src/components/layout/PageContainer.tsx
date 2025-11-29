@@ -1,6 +1,11 @@
-import PropTypes from 'prop-types';
+import { ReactNode } from 'react';
 
-const PageContainer = ({ children, className = '' }) => {
+interface PageContainerProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const PageContainer = ({ children, className = '' }: PageContainerProps) => {
   return (
     <div className={`min-h-screen flex flex-col bg-white dark:bg-dark-bg ${className}`}>
       <main className="flex-1 pb-20 lg:pb-8">
@@ -8,11 +13,6 @@ const PageContainer = ({ children, className = '' }) => {
       </main>
     </div>
   );
-};
-
-PageContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
 };
 
 export default PageContainer;

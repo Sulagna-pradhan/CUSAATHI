@@ -1,7 +1,17 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
-import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, ReactNode, MouseEvent } from 'react';
+
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  title?: string;
+  children: ReactNode;
+  size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  showCloseButton?: boolean;
+  closeOnBackdrop?: boolean;
+  className?: string;
+}
 
 const Modal = ({ 
   isOpen, 
@@ -12,7 +22,7 @@ const Modal = ({
   showCloseButton = true,
   closeOnBackdrop = true,
   className = '',
-}) => {
+}: ModalProps) => {
   const sizes = {
     sm: 'max-w-md',
     md: 'max-w-lg',
@@ -32,7 +42,7 @@ const Modal = ({
     };
   }, [isOpen]);
 
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = (e: MouseEvent<HTMLDivElement>) => {
     if (closeOnBackdrop && e.target === e.currentTarget) {
       onClose();
     }
@@ -86,17 +96,6 @@ const Modal = ({
       )}
     </AnimatePresence>
   );
-};
-
-Modal.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  title: PropTypes.string,
-  children: PropTypes.node.isRequired,
-  size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'full']),
-  showCloseButton: PropTypes.bool,
-  closeOnBackdrop: PropTypes.bool,
-  className: PropTypes.string,
 };
 
 export default Modal;

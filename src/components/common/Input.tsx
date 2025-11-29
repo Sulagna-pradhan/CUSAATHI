@@ -1,7 +1,16 @@
-import { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import { forwardRef, InputHTMLAttributes, ElementType } from 'react';
 
-const Input = forwardRef(({ 
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  error?: string;
+  helperText?: string;
+  icon?: ElementType;
+  iconPosition?: 'left' | 'right';
+  className?: string;
+  containerClassName?: string;
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(({ 
   label,
   error,
   helperText,
@@ -61,15 +70,5 @@ const Input = forwardRef(({
 });
 
 Input.displayName = 'Input';
-
-Input.propTypes = {
-  label: PropTypes.string,
-  error: PropTypes.string,
-  helperText: PropTypes.string,
-  icon: PropTypes.elementType,
-  iconPosition: PropTypes.oneOf(['left', 'right']),
-  className: PropTypes.string,
-  containerClassName: PropTypes.string,
-};
 
 export default Input;

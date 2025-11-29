@@ -1,7 +1,13 @@
-import { createContext, useContext, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-const ThemeContext = createContext();
+interface ThemeContextType {
+  theme: string;
+  setTheme: (theme: string) => void;
+  toggleTheme: () => void;
+  isDark: boolean;
+}
+
+const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
@@ -11,8 +17,12 @@ export const useTheme = () => {
   return context;
 };
 
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
+interface ThemeProviderProps {
+  children: ReactNode;
+}
+
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  const [theme, setTheme] = useState<string>(() => {
     // Check localStorage first
     const savedTheme = localStorage.getItem('cusaathi-theme');
     if (savedTheme) return savedTheme;
@@ -53,8 +63,4 @@ export const ThemeProvider = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
-};
-
-ThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };

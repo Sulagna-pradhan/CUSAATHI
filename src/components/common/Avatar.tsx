@@ -1,4 +1,11 @@
-import PropTypes from 'prop-types';
+interface AvatarProps {
+  src?: string;
+  alt?: string;
+  name?: string;
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+  status?: 'online' | 'offline' | 'busy' | 'away';
+  className?: string;
+}
 
 const Avatar = ({ 
   src, 
@@ -7,7 +14,7 @@ const Avatar = ({
   size = 'md',
   status,
   className = '',
-}) => {
+}: AvatarProps) => {
   const sizes = {
     xs: 'w-6 h-6 text-xs',
     sm: 'w-8 h-8 text-sm',
@@ -33,7 +40,7 @@ const Avatar = ({
     away: 'bg-amber-500',
   };
 
-  const getInitials = (name) => {
+  const getInitials = (name?: string) => {
     if (!name) return '?';
     const parts = name.split(' ');
     if (parts.length >= 2) {
@@ -57,15 +64,6 @@ const Avatar = ({
       )}
     </div>
   );
-};
-
-Avatar.propTypes = {
-  src: PropTypes.string,
-  alt: PropTypes.string,
-  name: PropTypes.string,
-  size: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl', '2xl']),
-  status: PropTypes.oneOf(['online', 'offline', 'busy', 'away']),
-  className: PropTypes.string,
 };
 
 export default Avatar;

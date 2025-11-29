@@ -1,6 +1,15 @@
 import { Search, X } from 'lucide-react';
-import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, ChangeEvent, InputHTMLAttributes } from 'react';
+
+interface SearchBarProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'size'> {
+  placeholder?: string;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onClear?: () => void;
+  className?: string;
+  variant?: 'default' | 'glass';
+  size?: 'sm' | 'md' | 'lg';
+}
 
 const SearchBar = ({ 
   placeholder = 'Search...',
@@ -11,14 +20,18 @@ const SearchBar = ({
   variant = 'default', // default, glass
   size = 'md', // sm, md, lg
   ...props
-}) => {
+}: SearchBarProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const handleClear = () => {
     if (onClear) {
       onClear();
     } else if (onChange) {
-      onChange({ target: { value: '' } });
+      // Create a synthetic event to clear the input
+      const event = {
+        target: { value: '' }
+      } as ChangeEvent<HTMLInputElement>;
+      onChange(event);
     }
   };
 
@@ -75,16 +88,6 @@ const SearchBar = ({
       </div>
     </div>
   );
-};
-
-SearchBar.propTypes = {
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  onClear: PropTypes.func,
-  className: PropTypes.string,
-  variant: PropTypes.oneOf(['default', 'glass']),
-  size: PropTypes.oneOf(['sm', 'md', 'lg']),
 };
 
 export default SearchBar;
