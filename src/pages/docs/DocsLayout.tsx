@@ -1,11 +1,22 @@
 import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { Book, Code, Layers, Palette, Database, Menu, X, ChevronRight } from 'lucide-react';
+import { Book, Code, Layers, Palette, Database, Menu, X, ChevronRight, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { auth } from '../../config/firebase';
+import { signOut } from 'firebase/auth';
 
 const DocsLayout = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      // DocsGuard will automatically redirect to login screen as user becomes null
+    } catch (error) {
+      console.error('Logout failed', error);
+    }
+  };
 
   const menuItems = [
     { 
@@ -75,7 +86,7 @@ const DocsLayout = () => {
           </nav>
         </div>
         
-        <div className="p-4 border-t border-gray-200 dark:border-dark-border">
+        <div className="p-4 border-t border-gray-200 dark:border-dark-border space-y-4">
           <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-xl">
             <h3 className="text-sm font-semibold text-emerald-800 dark:text-emerald-200 mb-1">
               Need Help?
@@ -92,6 +103,14 @@ const DocsLayout = () => {
               View Repository &rarr;
             </a>
           </div>
+
+          <button
+            onClick={handleLogout}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-sm font-medium"
+          >
+            <LogOut className="w-5 h-5" />
+            <span>Sign Out</span>
+          </button>
         </div>
       </aside>
 
@@ -124,9 +143,9 @@ const DocsLayout = () => {
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="md:hidden fixed left-0 top-16 bottom-0 z-50 w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-dark-border"
+            className="md:hidden fixed left-0 top-16 bottom-0 z-50 w-64 bg-white dark:bg-dark-card border-r border-gray-200 dark:border-dark-border flex flex-col"
           >
-            <div className="p-6 h-full overflow-y-auto">
+            <div className="p-6 flex-1 overflow-y-auto">
               <h2 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4">
                 Documentation
               </h2>
@@ -147,6 +166,19 @@ const DocsLayout = () => {
                   </Link>
                 ))}
               </nav>
+            </div>
+
+            <div className="p-4 border-t border-gray-200 dark:border-dark-border">
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setIsMobileOpen(false);
+                }}
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors text-sm font-medium"
+              >
+                <LogOut className="w-5 h-5" />
+                <span>Sign Out</span>
+              </button>
             </div>
           </motion.aside>
         )}

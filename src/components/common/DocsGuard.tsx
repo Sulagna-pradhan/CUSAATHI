@@ -1,44 +1,60 @@
 import { useState, useEffect, ReactNode } from 'react';
-import { Lock, Unlock } from 'lucide-react';
-import { Button, Input, Card } from './index';
+import { Lock, Mail } from 'lucide-react';
+import { Button, Input, Card, LoadingSpinner } from './index';
+import { auth } from '../../config/firebase';
+import { 
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  User
+} from 'firebase/auth';
 
 interface DocsGuardProps {
   children: ReactNode;
 }
 
 const DocsGuard = ({ children }: DocsGuardProps) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
-
-  const DOCS_PASSWORD = import.meta.env.VITE_DOCS_PASSWORD || 'dev123';
 
   useEffect(() => {
-    const accessGranted = sessionStorage.getItem('docs_access_granted');
-    if (accessGranted === 'true') {
-      setIsAuthenticated(true);
-    }
-    setLoading(false);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
   }, []);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === DOCS_PASSWORD) {
-      sessionStorage.setItem('docs_access_granted', 'true');
-      setIsAuthenticated(true);
-      setError('');
-    } else {
-      setError('Invalid access code');
-      setPassword('');
+    setError('');
+    
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (err: any) {
+      console.error(err);
+      if (err.code === 'auth/user-not-found' || err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
+        setError('Invalid email or password.');
+      } else if (err.code === 'auth/too-many-requests') {
+        setError('Too many failed attempts. Please try again later.');
+      } else {
+        setError('Authentication failed. Please try again.');
+      }
     }
   };
 
   if (loading) {
-    return null; // Or a loading spinner
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-dark-bg">
+        <LoadingSpinner size="lg" text="Verifying access..." />
+      </div>
+    );
   }
 
-  if (isAuthenticated) {
+  if (user) {
     return <>{children}</>;
   }
 
@@ -53,34 +69,44 @@ const DocsGuard = ({ children }: DocsGuardProps) => {
             Developer Access
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            This area is restricted to the development team. Please enter the access code to continue.
+            Please sign in to access the documentation.
           </p>
         </div>
 
-        <form onSubmit={handleLogin} className="space-y-6">
-          <div className="space-y-2">
-            <Input
-              label="Access Code"
-              type="password"
-              placeholder="Enter code..."
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              error={error}
-              icon={Unlock}
-            />
+        {error && (
+          <div className="mb-6 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-sm rounded-lg text-center">
+            {error}
           </div>
+        )}
 
-          <Button 
-            type="submit" 
-            variant="primary" 
-            fullWidth 
-            size="lg"
-            className="shadow-lg shadow-emerald-500/20"
-          >
-            Unlock Documentation
-          </Button>
-
-
+        <form onSubmit={handleLogin} className="space-y-4">
+          <Input
+            label="Email"
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            icon={Mail}
+          />
+          <Input
+            label="Password"
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            icon={Lock}
+          />
+          <div className="space-y-3 pt-2">
+            <Button 
+              type="submit" 
+              variant="primary" 
+              fullWidth 
+              size="lg"
+              className="bg-emerald-600 hover:bg-emerald-700"
+            >
+              Sign In
+            </Button>
+          </div>
         </form>
       </Card>
     </div>
