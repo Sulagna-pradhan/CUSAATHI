@@ -97,10 +97,10 @@ const About = () => {
               >
                 <Card className="text-center bg-white/10 backdrop-blur-sm border-white/20">
                   <Card.Body className="py-6">
-                    <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                    <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-emerald-100">
+                    <div className="text-sm text-gray-700 dark:text-gray-200">
                       {stat.label}
                     </div>
                   </Card.Body>
@@ -217,7 +217,7 @@ const About = () => {
             <Button
               variant="outline"
               size="lg"
-              className="bg-white text-emerald-700 hover:bg-emerald-50 border-white/80 text-base md:text-lg px-8 md:px-10 py-3.5 md:py-4 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 transition-all"
+              className="bg-white text-emerald-600 hover:bg-emerald-50 border-white/80 text-base md:text-lg px-8 md:px-10 py-3.5 md:py-4 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 transition-all dark:bg-white dark:text-emerald-700 dark:hover:bg-emerald-50"
             >
               Get Started Today
             </Button>

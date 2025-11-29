@@ -50,8 +50,8 @@ const Home = () => {
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-100 dark:from-emerald-900 dark:via-dark-bg dark:to-emerald-950">
         {/* Decorative blobs */}
         <div className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-24 -left-24 w-72 h-72 bg-emerald-300/30 dark:bg-emerald-500/20 blur-3xl rounded-full" />
-          <div className="absolute -bottom-32 right-0 w-80 h-80 bg-lime-300/30 dark:bg-lime-400/10 blur-3xl rounded-full" />
+          <div className="absolute -top-24 -left-24 w-72 h-72 bg-emerald-300/30 dark:bg-emerald-400/10 blur-3xl rounded-full" />
+          <div className="absolute -bottom-32 right-0 w-80 h-80 bg-lime-300/30 dark:bg-lime-300/8 blur-3xl rounded-full" />
         </div>
 
         <div className="container-custom py-16 md:py-24 relative z-10">
@@ -413,7 +413,7 @@ const Home = () => {
             <Button
               variant="outline"
               size="lg"
-              className="bg-white text-emerald-700 hover:bg-emerald-50 border-white/80 text-base md:text-lg px-8 md:px-10 py-3.5 md:py-4 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 transition-all"
+              className="bg-white text-emerald-600 hover:bg-emerald-50 border-white/80 text-base md:text-lg px-8 md:px-10 py-3.5 md:py-4 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 transition-all dark:bg-white dark:text-emerald-700 dark:hover:bg-emerald-50"
             >
               Create Your Free Account
             </Button>

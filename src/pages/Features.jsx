@@ -8,25 +8,29 @@ const Features = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-100 dark:from-emerald-900 dark:via-dark-bg dark:to-emerald-950 py-20">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white py-20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <Badge variant="primary" size="lg" className="mb-6">
+            <Badge variant="primary" size="lg" className="mb-6 bg-white/20 text-white border-white/30">
               <Sparkles className="w-4 h-4" />
-              Explore Features
+              Platform Features
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text">
-              Powerful Features for Students
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
+              Everything You Need to Succeed
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              Discover all the tools and resources CUSAATHI offers to help you succeed in your academic journey.
+            <p className="text-base md:text-xl text-emerald-100 leading-relaxed">
+              Discover the powerful features that make CUSAATHI your ultimate academic companion
             </p>
           </motion.div>
         </div>

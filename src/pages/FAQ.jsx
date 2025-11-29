@@ -1,15 +1,14 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Search } from 'lucide-react';
-import { Card, Badge, SearchBar, SectionTitle } from '../components/common';
+import { Link } from 'react-router-dom';
+import { Card, Badge, SearchBar, SectionTitle, Button } from '../components/common';
 import { categories, faqs } from '../data/constant/faqData';
 
 const FAQ = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
   const [openItems, setOpenItems] = useState([]);
-
-
 
   const toggleItem = (index) => {
     setOpenItems(prev =>
@@ -30,23 +29,27 @@ const FAQ = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-100 dark:from-emerald-900 dark:via-dark-bg dark:to-emerald-950 py-20">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white py-20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <Badge variant="primary" size="lg" className="mb-6">
+            <Badge variant="primary" size="lg" className="mb-6 bg-white/20 text-white border-white/30">
               Frequently Asked Questions
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
               How Can We Help You?
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-base md:text-xl text-emerald-100 mb-8 leading-relaxed">
               Find answers to common questions about CUSAATHI
             </p>
 
@@ -165,8 +168,27 @@ const FAQ = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 bg-white dark:bg-dark-bg">
-        <div className="container-custom text-center">
-          <SectionTitle 
+      <section className="py-24 md:py-28 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
+            Still Have Questions?
+          </h2>
+          <p className="text-base md:text-xl mb-10 opacity-90 max-w-2xl mx-auto leading-relaxed">
+            Can't find what you're looking for? Our support team is here to help.
+          </p>
+          <Link to="/contact">
+            <Button variant="outline" size="lg" className="bg-white text-emerald-600 hover:bg-emerald-50 border-white/80 dark:bg-white dark:text-emerald-700 dark:hover:bg-emerald-50">
+              Contact Support
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 export default FAQ;

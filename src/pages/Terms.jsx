@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { FileText, AlertTriangle, Scale } from 'lucide-react';
-import { Card, Badge, SectionTitle } from '../components/common';
+import { Link } from 'react-router-dom';
+import { Card, Badge, SectionTitle, Button } from '../components/common';
 import { sections, highlights } from '../data/constant/termsData';
 
 const Terms = () => {
@@ -9,28 +10,32 @@ const Terms = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 dark:from-dark-bg dark:via-dark-card dark:to-dark-bg py-20">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white py-20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <Badge variant="primary" size="lg" className="mb-6">
+            <Badge variant="primary" size="lg" className="mb-6 bg-white/20 text-white border-white/30">
               <Scale className="w-4 h-4" />
               Terms of Service
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
               Terms & Conditions
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+            <p className="text-base md:text-xl text-emerald-100 mb-4 leading-relaxed">
               Please read these terms carefully before using CUSAATHI
             </p>
             
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-white/80">
               Last updated: November 22, 2025
             </p>
           </motion.div>
@@ -139,19 +144,23 @@ const Terms = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
+      <section className="py-24 md:py-28 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
             Questions About Our Terms?
           </h2>
-          <p className="text-lg mb-8 opacity-90">
+          <p className="text-base md:text-xl mb-10 opacity-90 max-w-2xl mx-auto leading-relaxed">
             Our legal team is available to clarify any concerns
           </p>
-          <a href="/contact">
-            <button className="px-8 py-3 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+          <Link to="/contact">
+            <Button variant="outline" size="lg" className="bg-white text-emerald-600 hover:bg-emerald-50 border-white/80 dark:bg-white dark:text-emerald-700 dark:hover:bg-emerald-50">
               Contact Us
-            </button>
-          </a>
+            </Button>
+          </Link>
         </div>
       </section>
     </div>

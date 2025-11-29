@@ -31,19 +31,23 @@ const Search = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 dark:from-dark-bg dark:via-dark-card dark:to-dark-bg py-20">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white py-20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <Badge variant="primary" size="lg" className="mb-6">
+            <Badge variant="primary" size="lg" className="mb-6 bg-white/20 text-white border-white/30">
               <SearchIcon className="w-4 h-4" />
               Search
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
               Search CUSAATHI
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-base md:text-xl text-emerald-100 mb-8 leading-relaxed">
               Find resources, notices, people, and tools across the platform
             </p>
 
@@ -76,7 +80,7 @@ const Search = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   activeTab === tab.id
-                    ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/25'
+                    ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/25'
                     : 'bg-white dark:bg-dark-card text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-border border border-gray-200 dark:border-dark-border'
                 }`}
               >
@@ -112,7 +116,7 @@ const Search = () => {
                     <button
                       key={tag}
                       onClick={() => handleSearch(tag)}
-                      className="text-sm px-3 py-1 rounded-lg bg-white dark:bg-dark-card text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                      className="text-sm px-3 py-1 rounded-lg bg-white dark:bg-dark-card text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                     >
                       {tag}
                     </button>

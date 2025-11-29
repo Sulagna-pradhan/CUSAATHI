@@ -1,36 +1,39 @@
 import { motion } from 'framer-motion';
 import { Shield } from 'lucide-react';
-import { Card, Badge, SectionTitle } from '../components/common';
+import { Link } from 'react-router-dom';
+import { Card, Badge, SectionTitle, Button } from '../components/common';
 import { sections } from '../data/constant/privacyData';
 
 const Privacy = () => {
-
-
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-100 dark:from-emerald-900 dark:via-dark-bg dark:to-emerald-950 py-20">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white py-20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <Badge variant="primary" size="lg" className="mb-6">
+            <Badge variant="primary" size="lg" className="mb-6 bg-white/20 text-white border-white/30">
               <Shield className="w-4 h-4" />
               Privacy Policy
             </Badge>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
               Your Privacy Matters
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+            <p className="text-base md:text-xl text-emerald-100 mb-4 leading-relaxed">
               We are committed to protecting your personal information and being transparent about how we use it.
             </p>
             
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-white/80">
               Last updated: November 22, 2025
             </p>
           </motion.div>
@@ -154,6 +157,32 @@ const Privacy = () => {
                   <p><strong>Address:</strong> University of Calcutta, Kolkata, West Bengal, India</p>
                 </div>
               </Card.Body>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 md:py-28 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
+            Questions About Privacy?
+          </h2>
+          <p className="text-base md:text-xl mb-10 opacity-90 max-w-2xl mx-auto leading-relaxed">
+            Our team is here to help clarify any concerns
+          </p>
+          <Link to="/contact">
+            <Button variant="outline" size="lg" className="bg-white text-emerald-600 hover:bg-emerald-50 border-white/80 dark:bg-white dark:text-emerald-700 dark:hover:bg-emerald-50">
+              Contact Us
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 };
 
