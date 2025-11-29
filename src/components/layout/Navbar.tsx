@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Bell, User, Sun, Moon, Search, GraduationCap } from 'lucide-react';
+import { Menu, X, Bell, Sun, Moon, Search, GraduationCap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme, useAuth } from '../../contexts';
 import { Button, Avatar } from '../common';
@@ -36,7 +36,7 @@ const Navbar = () => {
               <GraduationCap className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">
-              CUSAATHI
+              CU SAATHI
             </span>
           </Link>
 

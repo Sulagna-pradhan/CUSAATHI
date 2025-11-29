@@ -43,7 +43,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-lime-500 rounded-lg flex items-center justify-center shadow-soft">
                 <GraduationCap className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold text-white">CUSAATHI</span>
+              <span className="text-2xl font-bold text-white">CU SAATHI</span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
               Your complete one-stop solution for University of Calcutta students across 151+ affiliated colleges and 60+ departments.
