@@ -19,7 +19,7 @@ const SectionTitle = ({ title, subtitle, align = 'center', center = false, class
         whileInView={{ opacity: 1, width: 96 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className={`h-1 bg-primary-600 dark:bg-primary-500 rounded-full mb-6 ${alignment ? 'mx-auto' : ''}`}
+        className={`h-1 bg-emerald-600 dark:bg-emerald-500 rounded-full mb-6 ${alignment ? 'mx-auto' : ''}`}
         style={{ width: '6rem' }}
       />
 

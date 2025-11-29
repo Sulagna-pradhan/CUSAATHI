@@ -22,9 +22,9 @@
     @apply bg-white/90 dark:bg-dark-card/90 backdrop-blur-sm border border-gray-200 dark:border-dark-border;
   }
 
-  /* Subtle gradient text - only for special headings */
+  /* Emerald gradient text */
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-emerald-500 via-emerald-600 to-lime-500 bg-clip-text text-transparent;
   }
 
   /* Container */
@@ -39,7 +39,7 @@
 
   /* Button base */
   .btn-base {
-    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply px-4 py-2 font-medium transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   /* Section backgrounds */
@@ -51,9 +51,9 @@
     @apply bg-gray-50 dark:bg-dark-card;
   }
 
-  /* Hero section - clean solid color */
+  /* Hero section - emerald theme */
   .hero-section {
-    @apply bg-primary-600 dark:bg-primary-900;
+    @apply bg-gradient-to-br from-emerald-50 via-white to-emerald-100 dark:from-emerald-900 dark:via-dark-bg dark:to-emerald-950;
   }
 }
 

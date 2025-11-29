@@ -8,7 +8,7 @@ const Features = () => {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 dark:from-dark-bg dark:via-dark-card dark:to-dark-bg py-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-100 dark:from-emerald-900 dark:via-dark-bg dark:to-emerald-950 py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ const Features = () => {
                           {feature.description}
                         </p>
                         
-                        <div className="flex items-center text-primary-600 dark:text-primary-400 font-semibold group">
+                        <div className="flex items-center text-emerald-600 dark:text-emerald-400 font-semibold group">
                           Explore Feature <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
                         </div>
                       </Card.Body>

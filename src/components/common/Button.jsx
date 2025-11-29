@@ -17,10 +17,10 @@ const Button = ({
   const baseStyles = 'btn-base inline-flex items-center justify-center gap-2 font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200';
   
   const variants = {
-    primary: 'bg-primary-600 hover:bg-primary-700 text-white shadow-soft hover:shadow-soft-lg focus:ring-primary-500',
-    secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white shadow-soft hover:shadow-soft-lg focus:ring-secondary-500',
-    outline: 'border-2 border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-950 focus:ring-primary-500',
-    ghost: 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-card focus:ring-gray-500',
+    primary: 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-soft hover:shadow-soft-lg focus:ring-emerald-500',
+    secondary: 'bg-lime-600 hover:bg-lime-700 text-white shadow-soft hover:shadow-soft-lg focus:ring-lime-500',
+    outline: 'border-2 border-emerald-300 text-emerald-800 dark:text-emerald-200 hover:bg-emerald-50 dark:hover:bg-emerald-900/40 dark:border-emerald-700 focus:ring-emerald-500',
+    ghost: 'text-gray-700 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 focus:ring-emerald-500',
     danger: 'bg-red-600 hover:bg-red-700 text-white shadow-soft hover:shadow-soft-lg focus:ring-red-500',
   };
 

@@ -44,7 +44,7 @@ const ToolsHub = () => {
         {/* Hero Section */}
         <section className="bg-white dark:bg-dark-bg border-b border-gray-200 dark:border-dark-border py-12">
           <div className="container-custom">
-            <Link to="/tools" className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 mb-8 transition-colors">
+            <Link to="/tools" className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 mb-8 transition-colors">
               <ArrowLeft className="w-5 h-5 mr-2" />
               Back to Tools
             </Link>
@@ -93,7 +93,7 @@ const ToolsHub = () => {
                         <div className={`p-3 rounded-xl ${category.bg} group-hover:scale-110 transition-transform duration-300`}>
                           <FeatureIcon className={`w-6 h-6 ${category.color}`} />
                         </div>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                           {feature.name}
                         </h3>
                       </Card.Body>
@@ -112,8 +112,12 @@ const ToolsHub = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-primary-600 dark:bg-primary-900 text-white py-20">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white py-20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -125,11 +129,11 @@ const ToolsHub = () => {
               Productivity Suite
             </Badge>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
               Tools for Every Day Need
             </h1>
             
-            <p className="text-xl md:text-2xl text-primary-100 mb-8 leading-relaxed">
+            <p className="text-base md:text-xl text-emerald-100 mb-8 leading-relaxed">
               Enhance your academic workflow with our comprehensive collection of utilities and AI-powered tools.
             </p>
           </motion.div>
@@ -154,8 +158,7 @@ const ToolsHub = () => {
               return (
                 <motion.div key={category.id} variants={itemVariants}>
                   <Card 
-                    className="h-full flex flex-col shadow-soft hover:shadow-soft-xl transition-all duration-300 group border-t-4"
-                    style={{ borderTopColor: category.color.replace('text-', 'var(--tw-') }}
+                    className="h-full flex flex-col shadow-soft hover:shadow-soft-xl transition-all duration-300 group"
                     hover
                   >
                     <Card.Body className="p-8 flex-1 flex flex-col">
@@ -188,7 +191,7 @@ const ToolsHub = () => {
                             <div className="w-7 flex justify-center">
                               <span className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-600" />
                             </div>
-                            <span className="text-primary-600 dark:text-primary-400 font-semibold">
+                            <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
                               + {remainingCount} more features
                             </span>
                           </div>
@@ -201,7 +204,7 @@ const ToolsHub = () => {
                           fullWidth 
                           icon={ArrowRight} 
                           iconPosition="right"
-                          className="group-hover:bg-primary-50 dark:group-hover:bg-primary-950 transition-colors"
+                          className="group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950 transition-colors"
                         >
                           Explore Tools
                         </Button>

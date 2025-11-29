@@ -13,8 +13,6 @@ import { Button, Card, Badge, SectionTitle } from '../components/common';
 import { features } from '../data/constant/featuresData';
 
 const Home = () => {
-
-
   const stats = [
     { label: 'Affiliated Colleges', value: '151+', icon: Award },
     { label: 'Departments', value: '60+', icon: BookOpen },
@@ -47,126 +45,258 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-white dark:bg-dark-bg text-gray-900 dark:text-white">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 dark:from-dark-bg dark:via-dark-card dark:to-dark-bg">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5" />
-        
-        <div className="container-custom py-20 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
-          >
-            <Badge variant="primary" size="lg" className="mb-6">
-              <Sparkles className="w-4 h-4" />
-              Welcome to CUSAATHI
-            </Badge>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text">
-              Your Complete University Companion
-            </h1>
-            
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-              One-stop solution for all University of Calcutta students across 151+ affiliated colleges and 60+ departments
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/register">
-                <Button size="lg" icon={ArrowRight} iconPosition="right" className="w-full sm:w-auto text-lg px-8 py-4">
-                  Get Started Free
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto text-lg px-8 py-4">
-                  Learn More
-                </Button>
-              </Link>
-            </div>
-          </motion.div>
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-100 dark:from-emerald-900 dark:via-dark-bg dark:to-emerald-950">
+        {/* Decorative blobs */}
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-24 -left-24 w-72 h-72 bg-emerald-300/30 dark:bg-emerald-500/20 blur-3xl rounded-full" />
+          <div className="absolute -bottom-32 right-0 w-80 h-80 bg-lime-300/30 dark:bg-lime-400/10 blur-3xl rounded-full" />
+        </div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
-          >
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <Card key={index} variant="glass" className="text-center border-none shadow-lg bg-white/50 dark:bg-black/20 backdrop-blur-sm">
-                  <Card.Body className="py-8">
-                    <Icon className="w-10 h-10 mx-auto mb-4 text-primary-500" />
-                    <div className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                      {stat.value}
+        <div className="container-custom py-16 md:py-24 relative z-10">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] items-center">
+            {/* Hero text */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white/80 px-4 py-2 text-sm font-medium text-emerald-700 shadow-sm backdrop-blur-sm dark:border-emerald-700/40 dark:bg-emerald-900/60">
+                <Sparkles className="w-4 h-4 text-emerald-500" />
+                <span>Smart Platform for CU Students</span>
+              </div>
+
+              <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                Learn, Connect, and
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-emerald-600 to-lime-500">
+                  Excel with CUSAATHI
+                </span>
+              </h1>
+
+              <p className="mt-5 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-xl leading-relaxed">
+                A modern learning hub crafted for University of Calcutta students across 151+ colleges and 60+ departments.
+              </p>
+
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <Link to="/register" className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    icon={ArrowRight}
+                    iconPosition="right"
+                    className="w-full sm:w-auto text-base md:text-lg px-7 md:px-9 py-3.5 md:py-4 bg-emerald-600 hover:bg-emerald-700 text-white shadow-lg shadow-emerald-500/30"
+                  >
+                    Get Started Free
+                  </Button>
+                </Link>
+                <Link to="/about" className="w-full sm:w-auto">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full sm:w-auto text-base md:text-lg px-7 md:px-9 py-3.5 md:py-4 border-emerald-300 text-emerald-800 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-200 dark:hover:bg-emerald-900/40"
+                  >
+                    Learn More
+                  </Button>
+                </Link>
+              </div>
+
+              {/* Mini highlights */}
+              <div className="mt-8 grid grid-cols-2 sm:flex gap-4 text-sm text-gray-600 dark:text-gray-300">
+                <div className="flex items-center gap-2">
+                  <div className="h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center dark:bg-emerald-900/60">
+                    <BookOpen className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-300" />
+                  </div>
+                  Curated PYQs & notes
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="h-6 w-6 rounded-full bg-emerald-100 flex items-center justify-center dark:bg-emerald-900/60">
+                    <Users className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-300" />
+                  </div>
+                  Active peer community
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Hero illustration / stats card */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="relative"
+            >
+              <div className="relative mx-auto max-w-md">
+                <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-emerald-400/20 via-lime-300/10 to-emerald-600/30 blur-2xl" />
+                <Card className="relative rounded-3xl border-none bg-white/90 shadow-xl backdrop-blur-md dark:bg-dark-card/90">
+                  <Card.Body className="p-6 sm:p-8">
+                    <div className="flex items-center justify-between mb-6">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.16em] text-emerald-600 font-semibold">
+                          LIVE INSIGHTS
+                        </p>
+                        <h3 className="mt-1 text-xl font-bold">CU Learning Dashboard</h3>
+                      </div>
+                      <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-emerald-500 to-lime-500 flex items-center justify-center text-white">
+                        <TrendingUp className="w-5 h-5" />
+                      </div>
                     </div>
-                    <div className="text-sm font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
-                      {stat.label}
+
+                    <div className="grid grid-cols-2 gap-4 mb-6">
+                      {stats.slice(0, 2).map((stat, index) => {
+                        const Icon = stat.icon;
+                        return (
+                          <div
+                            key={index}
+                            className="rounded-2xl bg-emerald-50/80 p-3 text-xs sm:text-sm text-gray-700 flex flex-col gap-1 dark:bg-emerald-900/50 dark:text-gray-100"
+                          >
+                            <div className="flex items-center justify-between">
+                              <span className="font-medium">{stat.label}</span>
+                              <Icon className="w-4 h-4 text-emerald-500" />
+                            </div>
+                            <span className="text-lg sm:text-xl font-extrabold text-emerald-700 dark:text-emerald-300">
+                              {stat.value}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex flex-col text-xs sm:text-sm text-gray-500 dark:text-gray-300">
+                        <span className="font-semibold text-emerald-700 dark:text-emerald-300">
+                          Study sessions happening now
+                        </span>
+                        <span>Join a group that matches your course.</span>
+                      </div>
+                      <Link to="/community">
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                          className="border border-emerald-200 px-3 py-1.5 text-xs font-semibold text-emerald-700 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-200 dark:hover:bg-emerald-900/60"
+                          icon={MessageSquare}
+                          iconPosition="left"
+                        >
+                          Explore Community
+                        </Button>
+                      </Link>
                     </div>
                   </Card.Body>
                 </Card>
-              );
-            })}
-          </motion.div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* About Us Section */}
-      <section className="py-24 bg-white dark:bg-dark-bg min-h-[80vh] flex items-center">
+      {/* Stats strip */}
+      <section className="bg-white dark:bg-dark-bg border-y border-emerald-100/70 dark:border-emerald-900/60">
+        <div className="container-custom py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <div
+                  key={index}
+                  className="flex items-center gap-3 rounded-2xl bg-emerald-50/80 px-4 py-3 text-sm text-gray-700 shadow-sm dark:bg-emerald-900/50 dark:text-gray-100"
+                >
+                  <div className="h-9 w-9 rounded-2xl bg-emerald-100 flex items-center justify-center dark:bg-emerald-800">
+                    <Icon className="w-5 h-5 text-emerald-600 dark:text-emerald-300" />
+                  </div>
+                  <div>
+                    <p className="text-base font-bold text-emerald-700 dark:text-emerald-300">
+                      {stat.value}
+                    </p>
+                    <p className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
+                      {stat.label}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-20 md:py-24 bg-gradient-to-b from-white to-emerald-50/60 dark:from-dark-bg dark:to-emerald-950/40">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <SectionTitle 
-                title="About CUSAATHI" 
+              <SectionTitle
+                title="Built for CU Students"
                 align="left"
-                className="mb-8"
+                className="mb-6"
               />
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                CUSAATHI is a student-led initiative designed to bridge the gap between resources and students of the University of Calcutta. We understand the challenges of finding accurate information, study materials, and a supportive community.
+              <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                CUSAATHI brings notices, PYQs, notes, and community spaces into one clean, distraction-free learning environment.
               </p>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Our mission is to empower every student with the right tools and resources to excel in their academic journey. From curated notices to a vast library of study materials, we are here to support you every step of the way.
+              <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                Whether you are revising for semester exams or discovering new electives, the platform adapts to how you study and collaborate.
               </p>
+
+              <div className="grid grid-cols-2 gap-4 mb-8 text-sm">
+                <div className="rounded-2xl border border-emerald-100 bg-white px-4 py-3 dark:border-emerald-800 dark:bg-dark-card">
+                  <p className="font-semibold text-emerald-700 dark:text-emerald-300">
+                    Always in sync
+                  </p>
+                  <p className="mt-1 text-gray-600 dark:text-gray-300">
+                    Notice updates and exam timelines centralised in one place.
+                  </p>
+                </div>
+                <div className="rounded-2xl border border-emerald-100 bg-white px-4 py-3 dark:border-emerald-800 dark:bg-dark-card">
+                  <p className="font-semibold text-emerald-700 dark:text-emerald-300">
+                    Study-ready design
+                  </p>
+                  <p className="mt-1 text-gray-600 dark:text-gray-300">
+                    Clean typography and green accents to reduce visual fatigue.
+                  </p>
+                </div>
+              </div>
+
               <Link to="/about">
-                <Button variant="outline" size="lg">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-emerald-300 text-emerald-800 hover:bg-emerald-50 dark:border-emerald-700 dark:text-emerald-200 dark:hover:bg-emerald-900/40"
+                >
                   Read Our Story
                 </Button>
               </Link>
             </motion.div>
+
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-3xl transform rotate-3 opacity-20 blur-xl" />
-              <img 
-                src="https://cdn.pixabay.com/photo/2022/11/07/06/53/helping-hands-7575803_1280.png" 
-                alt="Students studying" 
-                className="relative rounded-3xl shadow-2xl w-full object-cover aspect-video"
-              />
+              <div className="absolute -inset-4 bg-gradient-to-br from-emerald-300/40 via-lime-300/20 to-emerald-500/40 rounded-3xl opacity-60 blur-2xl" />
+              <div className="relative rounded-3xl border border-emerald-100 bg-white/90 shadow-xl overflow-hidden backdrop-blur-md dark:border-emerald-900 dark:bg-dark-card/90">
+                <img
+                  src="https://cdn.pixabay.com/photo/2020/08/22/12/42/teamwork-5508359_1280.png"
+                  alt="Students learning together"
+                  className="w-full object-cover aspect-video"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Why Us / Features Section */}
-      <section className="py-24 bg-gray-50 dark:bg-dark-card min-h-screen flex items-center">
+      <section className="py-20 md:py-24 bg-white dark:bg-dark-bg">
         <div className="container-custom">
-          <SectionTitle 
-            title="Why Choose CUSAATHI?" 
-            subtitle="We provide comprehensive features designed specifically for the needs of CU students, making your university life easier and more productive."
+          <SectionTitle
+            title="Why Students Choose CUSAATHI"
+            subtitle="Focused tools for tracking notices, planning revisions, and collaborating with your peers across CU."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -175,25 +305,30 @@ const Home = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.06 }}
                 >
                   <Link to={feature.link} className="block h-full">
-                    <Card clickable hover className="h-full border-none shadow-md hover:shadow-xl transition-all duration-300 bg-white dark:bg-dark-bg">
-                      <Card.Body className="p-8">
-                        <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 shadow-lg`}>
-                          <Icon className="w-7 h-7 text-white" />
+                    <Card
+                      clickable
+                      hover
+                      className="h-full border border-emerald-100/70 bg-emerald-50/70 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 dark:border-emerald-900 dark:bg-emerald-950/40"
+                    >
+                      <Card.Body className="p-6 md:p-7">
+                        <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-lime-500 flex items-center justify-center mb-5 shadow-lg">
+                          <Icon className="w-6 h-6 text-white" />
                         </div>
-                        
-                        <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+
+                        <h3 className="text-lg md:text-xl font-bold mb-2.5 text-gray-900 dark:text-white">
                           {feature.title}
                         </h3>
-                        
-                        <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+
+                        <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                           {feature.description}
                         </p>
-                        
-                        <div className="flex items-center text-primary-600 dark:text-primary-400 font-semibold group">
-                          Explore Feature <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
+
+                        <div className="flex items-center text-emerald-700 dark:text-emerald-300 font-semibold group text-sm">
+                          Explore feature
+                          <ArrowRight className="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" />
                         </div>
                       </Card.Body>
                     </Card>
@@ -206,48 +341,50 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-white dark:bg-dark-bg min-h-[80vh] flex items-center">
+      <section className="py-20 md:py-24 bg-gradient-to-b from-emerald-50/80 to-white dark:from-emerald-950/50 dark:to-dark-bg">
         <div className="container-custom">
-          <SectionTitle 
-            title="Student Stories" 
-            subtitle="Hear from your fellow students about how CUSAATHI has helped them in their academic journey."
+          <SectionTitle
+            title="Student Stories"
+            subtitle="Real experiences from CU students using CUSAATHI to simplify their semester."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-7">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.96 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
               >
-                <Card className="h-full bg-gray-50 dark:bg-dark-card border-none">
-                  <Card.Body className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
-                      <img 
-                        src={testimonial.avatar} 
-                        alt={testimonial.name} 
-                        className="w-12 h-12 rounded-full ring-2 ring-primary-100 dark:ring-primary-900"
+                <Card className="h-full bg-white border border-emerald-100/80 shadow-md dark:bg-dark-card dark:border-emerald-900">
+                  <Card.Body className="p-6 md:p-7">
+                    <div className="flex items-center gap-4 mb-5">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="w-12 h-12 rounded-full ring-2 ring-emerald-100 dark:ring-emerald-800"
                       />
                       <div>
-                        <h4 className="font-bold text-gray-900 dark:text-white">
+                        <h4 className="font-semibold text-gray-900 dark:text-white">
                           {testimonial.name}
                         </h4>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">
+                        <p className="text-xs text-gray-500 dark:text-gray-400">
                           {testimonial.role}
                         </p>
                       </div>
                     </div>
-                    <div className="mb-4">
+
+                    <div className="mb-3 text-yellow-400 text-lg">
                       {[1, 2, 3, 4, 5].map((star) => (
-                        <span key={star} className="text-yellow-400 text-lg">★</span>
+                        <span key={star}>★</span>
                       ))}
                     </div>
-                    <p className="text-gray-600 dark:text-gray-300 italic leading-relaxed">
-                      "{testimonial.content}"
+
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-200 italic leading-relaxed">
+                      “{testimonial.content}”
                     </p>
-                    <div className="mt-6 pt-6 border-t border-gray-200 dark:border-dark-border text-xs font-medium text-gray-500 uppercase tracking-wide">
+                    <div className="mt-6 pt-5 border-t border-emerald-100 text-xs font-medium text-gray-500 uppercase tracking-wide dark:border-emerald-900">
                       {testimonial.college}
                     </div>
                   </Card.Body>
@@ -259,20 +396,25 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-gradient-to-br from-primary-600 to-secondary-600 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-grid-pattern opacity-10" />
-        <div className="absolute top-0 left-0 w-64 h-64 bg-white opacity-10 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-black opacity-10 blur-3xl rounded-full translate-x-1/3 translate-y-1/3" />
-        
+      <section className="py-24 md:py-28 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+
         <div className="container-custom text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8">
-            Ready to Excel?
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
+            Ready to upgrade your CU journey?
           </h2>
-          <p className="text-xl md:text-2xl mb-12 opacity-90 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of CU students already using CUSAATHI to simplify their university life and achieve their goals.
+          <p className="text-base md:text-xl mb-10 opacity-90 max-w-2xl mx-auto leading-relaxed">
+            Join thousands of students using CUSAATHI to keep track of notices, access structured notes, and collaborate smarter.
           </p>
           <Link to="/register">
-            <Button variant="outline" size="lg" className="bg-white text-primary-600 hover:bg-gray-100 border-white text-lg px-10 py-4 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all">
+            <Button
+              variant="outline"
+              size="lg"
+              className="bg-white text-emerald-700 hover:bg-emerald-50 border-white/80 text-base md:text-lg px-8 md:px-10 py-3.5 md:py-4 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 transition-all"
+            >
               Create Your Free Account
             </Button>
           </Link>

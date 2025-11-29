@@ -40,7 +40,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-4 group">
-              <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center shadow-soft">
+              <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-lime-500 rounded-lg flex items-center justify-center shadow-soft">
                 <GraduationCap className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold text-white">CUSAATHI</span>
@@ -52,22 +52,22 @@ const Footer = () => {
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
-                <div className="w-8 h-8 bg-primary-600/10 rounded-lg flex items-center justify-center">
-                  <Mail className="w-4 h-4 text-primary-400" />
+                <div className="w-8 h-8 bg-emerald-600/10 rounded-lg flex items-center justify-center">
+                  <Mail className="w-4 h-4 text-emerald-400" />
                 </div>
-                <a href="mailto:support@cusaathi.edu" className="hover:text-primary-400 transition-colors">
+                <a href="mailto:support@cusaathi.edu" className="hover:text-emerald-400 transition-colors">
                   support@cusaathi.edu
                 </a>
               </div>
               <div className="flex items-center gap-3 text-sm">
-                <div className="w-8 h-8 bg-primary-600/10 rounded-lg flex items-center justify-center">
-                  <Phone className="w-4 h-4 text-primary-400" />
+                <div className="w-8 h-8 bg-emerald-600/10 rounded-lg flex items-center justify-center">
+                  <Phone className="w-4 h-4 text-emerald-400" />
                 </div>
                 <span>+91 XXXX-XXXXXX</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
-                <div className="w-8 h-8 bg-primary-600/10 rounded-lg flex items-center justify-center">
-                  <MapPin className="w-4 h-4 text-primary-400" />
+                <div className="w-8 h-8 bg-emerald-600/10 rounded-lg flex items-center justify-center">
+                  <MapPin className="w-4 h-4 text-emerald-400" />
                 </div>
                 <span>Kolkata, West Bengal, India</span>
               </div>
@@ -83,7 +83,7 @@ const Footer = () => {
                   <li key={link.path}>
                     <Link
                       to={link.path}
-                      className="text-sm text-gray-400 hover:text-primary-400 transition-colors inline-block"
+                      className="text-sm text-gray-400 hover:text-emerald-400 transition-colors inline-block"
                     >
                       {link.name}
                     </Link>
@@ -111,7 +111,7 @@ const Footer = () => {
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary-600 rounded-lg transition-all"
+                    className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-emerald-600 rounded-lg transition-all"
                   >
                     <Icon className="w-5 h-5" />
                   </a>

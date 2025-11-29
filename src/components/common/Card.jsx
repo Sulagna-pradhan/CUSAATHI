@@ -1,25 +1,34 @@
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
-const Card = ({ 
-  children, 
+const Card = ({
+  children,
   variant = 'default',
   clickable = false,
   hover = true,
   className = '',
   onClick,
-  ...props 
+  ...props
 }) => {
-  const baseStyles = 'rounded-xl overflow-hidden transition-all duration-300';
-  
+  const baseStyles =
+    'relative rounded-2xl overflow-hidden transition-all duration-300 ease-out';
+
   const variants = {
-    default: 'bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border shadow-sm',
-    elevated: 'bg-white dark:bg-dark-card shadow-lg',
-    glass: 'glass shadow-lg',
-    gradient: 'bg-gradient-to-br from-primary-500/10 via-secondary-500/10 to-accent-500/10 border border-primary-200 dark:border-primary-800',
+    // Slightly stronger border so multiple cards are clearly separated
+    default:
+      'bg-white/90 dark:bg-dark-card/95 border border-emerald-200 dark:border-emerald-800 shadow-sm shadow-emerald-50/80 dark:shadow-none',
+    elevated:
+      'bg-white dark:bg-dark-card border border-emerald-200 dark:border-emerald-800 shadow-md shadow-emerald-100/80 dark:shadow-emerald-950/40',
+    glass:
+      'bg-emerald-50/40 dark:bg-emerald-900/40 border border-emerald-200/70 dark:border-emerald-700/70 backdrop-blur-xl shadow-lg shadow-emerald-200/50 dark:shadow-emerald-950/60',
+    gradient:
+      'bg-gradient-to-br from-emerald-50 via-white to-lime-50 dark:from-emerald-950/70 dark:via-dark-bg dark:to-emerald-900/80 border border-emerald-200 dark:border-emerald-800 shadow-md shadow-emerald-100/80 dark:shadow-emerald-950/50',
   };
 
-  const hoverStyles = hover ? 'card-hover' : '';
+  const hoverStyles = hover
+    ? 'hover:shadow-lg hover:shadow-emerald-200/80 dark:hover:shadow-emerald-900/80 hover:-translate-y-0.5'
+    : '';
+
   const clickableStyles = clickable ? 'cursor-pointer' : '';
 
   const Component = clickable ? motion.div : 'div';
@@ -32,7 +41,9 @@ const Card = ({
       whileTap={clickable ? { scale: 0.98 } : {}}
       {...props}
     >
-      {children}
+      {/* subtle inner outline to separate card content from background when many cards are together */}
+      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-emerald-100/60 dark:ring-emerald-900/70" />
+      <div className="relative">{children}</div>
     </Component>
   );
 };
@@ -46,9 +57,10 @@ Card.propTypes = {
   onClick: PropTypes.func,
 };
 
-// Card sub-components
 Card.Header = ({ children, className = '' }) => (
-  <div className={`px-6 py-4 border-b border-gray-200 dark:border-dark-border ${className}`}>
+  <div
+    className={`px-4 md:px-6 py-3 md:py-4 border-b border-emerald-100/90 dark:border-emerald-800 flex items-center gap-3 ${className}`}
+  >
     {children}
   </div>
 );
@@ -59,9 +71,7 @@ Card.Header.propTypes = {
 };
 
 Card.Body = ({ children, className = '' }) => (
-  <div className={`px-6 py-4 ${className}`}>
-    {children}
-  </div>
+  <div className={`px-4 md:px-6 py-4 md:py-5 ${className}`}>{children}</div>
 );
 
 Card.Body.propTypes = {
@@ -70,7 +80,9 @@ Card.Body.propTypes = {
 };
 
 Card.Footer = ({ children, className = '' }) => (
-  <div className={`px-6 py-4 border-t border-gray-200 dark:border-dark-border bg-gray-50 dark:bg-dark-bg/50 ${className}`}>
+  <div
+    className={`px-4 md:px-6 py-3 md:py-4 border-t border-emerald-100/90 dark:border-emerald-800 bg-emerald-50/40 dark:bg-emerald-950/40 flex items-center gap-3 ${className}`}
+  >
     {children}
   </div>
 );

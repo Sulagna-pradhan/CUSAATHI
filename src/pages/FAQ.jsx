@@ -30,7 +30,7 @@ const FAQ = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 dark:from-dark-bg dark:via-dark-card dark:to-dark-bg py-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-100 dark:from-emerald-900 dark:via-dark-bg dark:to-emerald-950 py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -75,7 +75,7 @@ const FAQ = () => {
                   onClick={() => setActiveCategory(cat.id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all ${
                     activeCategory === cat.id
-                      ? 'bg-primary-500 text-white shadow-lg'
+                      ? 'bg-emerald-500 text-white shadow-lg'
                       : 'bg-gray-100 dark:bg-dark-card text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-border'
                   }`}
                 >
@@ -168,18 +168,5 @@ const FAQ = () => {
       <section className="py-20 bg-white dark:bg-dark-bg">
         <div className="container-custom text-center">
           <SectionTitle 
-            title="Still Have Questions?" 
-            subtitle="Can't find what you're looking for? Our support team is here to help."
-          />
-          <a href="/contact">
-            <button className="px-8 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-lg font-semibold hover:shadow-lg transition-shadow">
-              Contact Support
-            </button>
-          </a>
-        </div>
-      </section>
-    </div>
-  );
-};
 
 export default FAQ;

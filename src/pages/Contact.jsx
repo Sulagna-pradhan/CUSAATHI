@@ -74,8 +74,12 @@ const Contact = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-primary-600 dark:bg-primary-900 text-white py-20">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white py-20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,11 +90,11 @@ const Contact = () => {
               Get in Touch
             </Badge>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
               We're Here to Help
             </h1>
             
-            <p className="text-xl md:text-2xl text-primary-100 leading-relaxed">
+            <p className="text-base md:text-xl text-emerald-100 leading-relaxed">
               Have questions, feedback, or need assistance? Our team is ready to support you.
             </p>
           </motion.div>
@@ -120,7 +124,7 @@ const Contact = () => {
                         {info.title}
                       </h3>
                       
-                      <p className="text-primary-600 dark:text-primary-400 font-semibold mb-1">
+                      <p className="text-emerald-600 dark:text-emerald-400 font-semibold mb-1">
                         {info.value}
                       </p>
                       
@@ -185,18 +189,18 @@ const Contact = () => {
                             onClick={() => setFormData({ ...formData, category: cat.value })}
                             className={`p-3 rounded-lg border-2 transition-all ${
                               formData.category === cat.value
-                                ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/30'
+                                ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-900/30'
                                 : 'border-gray-300 dark:border-dark-border hover:border-primary-300'
                             }`}
                           >
                             <Icon className={`w-5 h-5 mx-auto mb-1 ${
                               formData.category === cat.value
-                                ? 'text-primary-600 dark:text-primary-400'
+                                ? 'text-emerald-600 dark:text-emerald-400'
                                 : 'text-gray-500'
                             }`} />
                             <span className={`text-xs font-medium ${
                               formData.category === cat.value
-                                ? 'text-primary-600 dark:text-primary-400'
+                                ? 'text-emerald-600 dark:text-emerald-400'
                                 : 'text-gray-600 dark:text-gray-400'
                             }`}>
                               {cat.label}

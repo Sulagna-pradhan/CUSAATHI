@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Target, Users, Lightbulb, Award, Heart, Zap } from 'lucide-react';
-import { Card, Badge, SectionTitle } from '../components/common';
+import { Card, Badge, SectionTitle, Button } from '../components/common';
 
 const About = () => {
   const stats = [
@@ -59,8 +60,12 @@ const About = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-primary-600 dark:bg-primary-900 text-white py-20">
-        <div className="container-custom">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white py-20">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -72,11 +77,11 @@ const About = () => {
               Our Mission
             </Badge>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
               Empowering CU Students, Together
             </h1>
             
-            <p className="text-xl md:text-2xl text-primary-100 mb-16 leading-relaxed">
+            <p className="text-base md:text-xl text-emerald-100 mb-16 leading-relaxed">
               Building a digital ecosystem for the University of Calcutta community
             </p>
           </motion.div>
@@ -95,7 +100,7 @@ const About = () => {
                     <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-primary-100">
+                    <div className="text-sm text-emerald-100">
                       {stat.label}
                     </div>
                   </Card.Body>
@@ -196,19 +201,27 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="py-24 md:py-28 bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 text-white relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-32 left-10 w-80 h-80 bg-white/10 blur-3xl rounded-full" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-900/60 blur-3xl rounded-full" />
+        </div>
+        <div className="container-custom text-center relative z-10">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight">
             Join the CUSAATHI Community
           </h2>
-          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+          <p className="text-base md:text-xl mb-10 opacity-90 max-w-2xl mx-auto leading-relaxed">
             Be part of a growing network of CU students helping each other succeed
           </p>
-          <a href="/register" className="inline-block">
-            <button className="px-8 py-4 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+          <Link to="/register">
+            <Button
+              variant="outline"
+              size="lg"
+              className="bg-white text-emerald-700 hover:bg-emerald-50 border-white/80 text-base md:text-lg px-8 md:px-10 py-3.5 md:py-4 shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5 transition-all"
+            >
               Get Started Today
-            </button>
-          </a>
+            </Button>
+          </Link>
         </div>
       </section>
     </div>

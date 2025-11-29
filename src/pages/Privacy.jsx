@@ -9,7 +9,7 @@ const Privacy = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-secondary-50 to-accent-50 dark:from-dark-bg dark:via-dark-card dark:to-dark-bg py-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-100 dark:from-emerald-900 dark:via-dark-bg dark:to-emerald-950 py-20">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -82,7 +82,7 @@ const Privacy = () => {
                   <Card hover>
                     <Card.Body className="p-8">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center flex-shrink-0">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-lime-500 flex items-center justify-center flex-shrink-0">
                           <Icon className="w-6 h-6 text-white" />
                         </div>
                         
@@ -94,7 +94,7 @@ const Privacy = () => {
                           <ul className="space-y-3">
                             {section.content.map((item, idx) => (
                               <li key={idx} className="flex items-start gap-3">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 mt-2 flex-shrink-0" />
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 flex-shrink-0" />
                                 <span className="text-gray-600 dark:text-gray-300 leading-relaxed">
                                   {item}
                                 </span>
@@ -154,28 +154,6 @@ const Privacy = () => {
                   <p><strong>Address:</strong> University of Calcutta, Kolkata, West Bengal, India</p>
                 </div>
               </Card.Body>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-primary-600 to-secondary-600 text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Questions About Your Privacy?
-          </h2>
-          <p className="text-lg mb-8 opacity-90">
-            Our team is here to help clarify any concerns
-          </p>
-          <a href="/contact">
-            <button className="px-8 py-3 bg-white text-primary-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
-              Contact Us
-            </button>
-          </a>
-        </div>
-      </section>
-    </div>
   );
 };
 

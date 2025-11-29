@@ -27,12 +27,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-40 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-dark-border shadow-sm">
+    <nav className="sticky top-0 z-40 bg-white dark:bg-dark-card border-b border-emerald-100 dark:border-emerald-900/60 shadow-sm">
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-primary-600 dark:bg-primary-500 rounded-lg flex items-center justify-center shadow-soft group-hover:shadow-soft-lg transition-shadow">
+            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-lime-500 rounded-lg flex items-center justify-center shadow-soft group-hover:shadow-soft-lg transition-shadow">
               <GraduationCap className="w-6 h-6 text-white" />
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">
@@ -48,8 +48,8 @@ const Navbar = () => {
                 to={link.path}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
                   isActive(link.path)
-                    ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-bg'
+                    ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/10'
                 }`}
               >
                 {link.name}
@@ -63,7 +63,7 @@ const Navbar = () => {
             <div className="hidden md:block">
               <Link
                 to="/search"
-                className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-bg rounded-lg transition-colors inline-block"
+                className="p-2 text-gray-600 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg transition-colors inline-block"
               >
                 <Search className="w-5 h-5" />
               </Link>
@@ -72,7 +72,7 @@ const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-bg rounded-lg transition-colors"
+              className="p-2 text-gray-600 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg transition-colors"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
@@ -84,7 +84,7 @@ const Navbar = () => {
 
             {/* Notifications */}
             {isAuthenticated && (
-              <button className="relative p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-bg rounded-lg transition-colors">
+              <button className="relative p-2 text-gray-600 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg transition-colors">
                 <Bell className="w-5 h-5" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
               </button>
@@ -103,7 +103,7 @@ const Navbar = () => {
             ) : (
               <div className="hidden md:flex items-center gap-2">
                 <Link to="/register">
-                  <Button variant="primary" size="sm">
+                  <Button variant="primary" size="sm" className="bg-emerald-600 hover:bg-emerald-700">
                     Get Started
                   </Button>
                 </Link>
@@ -113,7 +113,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-bg rounded-lg transition-colors"
+              className="lg:hidden p-2 text-gray-600 dark:text-gray-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 rounded-lg transition-colors"
             >
               {mobileMenuOpen ? (
                 <X className="w-6 h-6" />
@@ -132,13 +132,13 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden border-t border-gray-200 dark:border-dark-border overflow-hidden bg-white dark:bg-dark-card"
+            className="lg:hidden border-t border-emerald-100 dark:border-emerald-900/60 overflow-hidden bg-white dark:bg-dark-card"
           >
             <div className="container-custom py-4 space-y-2">
               {/* Mobile Search */}
               <div className="md:hidden mb-4">
                 <Link to="/search">
-                  <Button variant="outline" className="w-full justify-start text-gray-500 font-normal">
+                  <Button variant="outline" className="w-full justify-start text-gray-500 font-normal border-emerald-200 dark:border-emerald-800">
                     <Search className="w-4 h-4 mr-2" />
                     Search CUSAATHI...
                   </Button>
@@ -153,8 +153,8 @@ const Navbar = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block px-4 py-3 rounded-lg font-medium transition-all ${
                     isActive(link.path)
-                      ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400'
-                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-dark-bg'
+                      ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-emerald-50/50 dark:hover:bg-emerald-900/10'
                   }`}
                 >
                   {link.name}
@@ -163,9 +163,9 @@ const Navbar = () => {
 
               {/* Mobile Auth Buttons */}
               {!isAuthenticated && (
-                <div className="flex gap-2 pt-4 border-t border-gray-200 dark:border-dark-border">
+                <div className="flex gap-2 pt-4 border-t border-emerald-100 dark:border-emerald-900/60">
                   <Link to="/register" className="flex-1">
-                    <Button variant="primary" size="md" className="w-full">
+                    <Button variant="primary" size="md" className="w-full bg-emerald-600 hover:bg-emerald-700">
                       Get Started
                     </Button>
                   </Link>
