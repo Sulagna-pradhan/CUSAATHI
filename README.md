@@ -2,7 +2,7 @@
 
 **CUSAATHI** is a comprehensive digital platform designed to empower students with resources, tools, and community support. It serves as a one-stop solution for academic needs, career guidance, and campus connectivity.
 
-![CUSAATHI Banner](https://via.placeholder.com/1200x400?text=CUSAATHI+Platform)
+![CUSAATHI Banner](public/image.png)
 
 ## 🚀 Features
 
