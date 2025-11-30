@@ -68,8 +68,7 @@ We have a comprehensive internal documentation site available at `/docs`.
 
 - **URL**: `http://localhost:5173/docs`
 - **Access**: Protected by a developer access code.
-- **Default Code**: `dev123` (or check your `.env` file)
-
+  
 The documentation covers:
 - Project Structure
 - Component Library
